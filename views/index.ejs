@@ -1,0 +1,13 @@
+ <% items.forEach((item)=> {%> 
+    <%= item.studentId %>
+    <%= item.firstName %>
+    <%= item.lastName %>
+    <%= item.email %>
+    <%= item.password %>
+    <form action="/delete/<%=item.studentId%>" method="POST">
+      <input type="submit" value=Delete></form>
+    <a href="/edit/<%=item.studentId%>">Edit</a>
+     <br> 
+
+    <% }); %>
+    
