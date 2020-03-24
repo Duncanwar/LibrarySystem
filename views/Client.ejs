@@ -1,4 +1,7 @@
 <%-include('partials/header')%>
+<center>
+    <h2>Client Registration</h2>
+</center>
 <form action="/home" method="POST"  >
     <div>
 <div>
@@ -22,8 +25,8 @@
         <option value="EXTERNAL">EXTERNAL</option>
     </select>
 </div>
-<div>
-    <p>Photo</p><input type="file" name="photo">
+<div id="photo">
+    <p id="photo1">Photo</p><input type="file" name="photo">
 </div>
 <div>
     <input type="submit" name="Submit" value="Submit">

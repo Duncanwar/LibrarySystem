@@ -1,3 +1,7 @@
+<%-include('partials/header')%>
+<center>
+    <h2>Client Registration</h2>
+</center>
 <form action="/CheckOut" method="POST">
     <select name="names">
         <% for(var i=0;i < dropdowns.length ;i++){ %>
@@ -12,14 +16,5 @@
     </select>
     <input type="submit" name="submit" value="Submit" >
   
-
-    <% items.forEach((item)=> {%> 
-        <tr>   
-          <td><%= item.firstName %></td>
-          <td> <%= item.bookName %></td>
-    <td>   <form action="/delete/<%=item.regNo%>" method="POST">
-             <input type="submit" value=Delete></form></td>
-           <td>     <a href="/edit/<%=item.studentId%>">Edit</a></td>
-            <br> </tr>
-    <% }); %>
 </form>
+<%-include('partials/footer')%>

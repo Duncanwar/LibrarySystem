@@ -1,3 +1,7 @@
+<%-include('partials/header')%>
+<center>
+    <h2>Client Registration</h2>
+</center>
 <form action="/CheckIn" method="POST">
 <select name="names">
     <% for(var i=0;i < dropdowns.length ;i++){ %>
@@ -12,3 +16,4 @@
 </select>
 <input type="submit" name="submit" value="Submit" >
 </form>
+<%-include('partials/footer')%>

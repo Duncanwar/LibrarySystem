@@ -61,4 +61,22 @@ width: 200px;
     border: none;
     height: 30px;
 }
-
+form{
+    padding: 20px;
+    text-align: center;
+    background: skyblue;
+}
+/* input[type=submit]
+{
+    margin: 20px;
+    width: 50px auto;
+} */
+h2{
+    text-transform: uppercase;
+}
+#photo1{
+    width: 50px auto;
+}
+input[value=Delete]{
+    background: none;
+}

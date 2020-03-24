@@ -178,12 +178,7 @@ app.get("/CheckOut",function(req,res){
         else
         res.render("CheckOut",{dropdowns:results})
     });
-    connection.query("select * from operations",(error,rows)=>{
-if(error)
-res.send(error)
-else 
-res.render("CheckOut",{items:rows})
-    })
+
 })
 
 app.post("/CheckOut",function(req,res){
