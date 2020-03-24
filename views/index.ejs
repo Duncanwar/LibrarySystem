@@ -1,13 +1,30 @@
- <% items.forEach((item)=> {%> 
-    <%= item.studentId %>
-    <%= item.firstName %>
-    <%= item.lastName %>
-    <%= item.email %>
-    <%= item.password %>
-    <form action="/delete/<%=item.studentId%>" method="POST">
-      <input type="submit" value=Delete></form>
-    <a href="/edit/<%=item.studentId%>">Edit</a>
-     <br> 
 
-    <% }); %>
-    
+<%-include('partials/header')%>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% items.forEach((item)=> {%> 
+     <tr>   
+       <td><%= item.regNo %></td>
+       <td> <%= item.firstName %></td>
+     <td> <%= item.lastName %></td>
+     <td> <%= item.phoneNumber %></td>
+  <td><%= item.emailAddress %></td>
+<td> <%= item.clientCategory %></td>
+<td>   <form action="/delete/<%=item.regNo%>" method="POST">
+          <input type="submit" value=Delete></form></td>
+        <td>     <a href="/edit/<%=item.studentId%>">Edit</a></td>
+         <br> </tr>
+<% }); %>
+  </tbody>
+</table>
+
+<%-include('partials/footer')%>

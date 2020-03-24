@@ -1,0 +1,34 @@
+<%-include('partials/header')%>
+<form action="/home" method="POST"  >
+    <div>
+<div>
+    <p>Reg:No</p><input type="text" name="regNo">
+</div>
+<div>
+    <p>firstName</p><input type="text" name="firstName">
+</div>
+<div>
+    <p>LastName</p><input type="text" name="lastName">
+</div>
+<div>
+    <p>phoneNumber</p><input type="number" name="phoneNumber">
+</div>
+<div>
+    <p>emailAddress</p><input type="email" name="emailAddress">
+</div>
+<div>
+    <label>ClientCategory</label><select name="client"><option value="STUDENT">STUDENT</option>
+        <option  value="STAFF">INTERNAL</option>
+        <option value="EXTERNAL">EXTERNAL</option>
+    </select>
+</div>
+<div>
+    <p>Photo</p><input type="file" name="photo">
+</div>
+<div>
+    <input type="submit" name="Submit" value="Submit">
+</div>
+</div>
+</form>
+
+<%-include('partials/footer')%>

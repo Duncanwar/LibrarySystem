@@ -2,13 +2,16 @@ let express=require("express");
 let app=express();
 let bodyParser=require('body-parser');
 let msyql=require("mysql");
+let multer=require('multer');
+let upload=multer({dest:'public/uploads/'});
+
 
 
 let connection=msyql.createConnection({
     host:'localhost',
     user:'root',
     password:'',
-    database:"JSLibrary"
+    database:"Library"
 
 });
 
@@ -29,13 +32,9 @@ app.use(express.static(__dirname + '/public'));
 app.set("view engine","ejs");
 
 app.get("/",function(req,res){
-res.send("HomePage");
+res.render("Home");
 });
 
-//app.get("/Login",function(req,res){
-   
-//res.render("Login");
-//});
 
 app.get("/SignUp",function(req,res){
     res.render("SignUP");
@@ -45,46 +44,48 @@ app.get("/SignUp",function(req,res){
 app.post("/home",function(req,res){
    
      const data={
-        studentId:req.body.id,
-        firstName:req.body.firstName,
+       regNo:req.body.regNo,
+       firstName:req.body.firstName,
        lastName:req.body.lastName,
-       email:req.body.email,
-        password:req.body.password
+       phoneNumber:req.body.phoneNumber,
+       emailAddress:req.body.emailAddress,
+       clientCategory:req.body.client,
+       photo:req.body.photo
      }
  
    
-    connection.query('insert into LogIn SET ?',data,function(error){
+    connection.query('insert into Client SET ?',data,function(error){
         if(error)
-        console.log(error);
+    res.send(error);
         else
-        console.log("data saved")
+        res.redirect("index");
     });
 
-res.redirect("index");
+
 
 });
 
-app.post("/delete/:studentId",function(req,res){
-    connection.query('delete from LogIn where studentId =?',[req.params.studentId],(error,results)=>{
+app.post("/delete/:regNo",function(req,res){
+    connection.query('delete from Client where regNo =?',[req.params.regNo],(error,results)=>{
 res.redirect("/index");
     })
 })
 
 app.get("/edit/:id",function(req,res){
-    connection.query('select *  from LogIn where studentId=?',[req.params.id],(error,results)=>{
+    connection.query('select *  from Client where regNo=?',[req.params.id],(error,results)=>{
         res.render('new');
     });
 });
 
 app.post("/update/:id",function(req,res){
-    connection.query('update LogIn set firstName = ? where studentId= ?',[req.body.firstName,req.params.id],(error,results)=>{
+    connection.query('update Client set firstName = ? where regNo= ?',[req.body.firstName,req.params.id],(error,results)=>{
         res.redirect("/index");
     })
 })
 
 //get the data in database
 app.get("/index",function(req,res){
-    connection.query('select * from LogIn',(error,rows)=>{
+    connection.query('select * from Client',(error,rows)=>{
         if(!error)
         res.render("index",{items:rows});
         else
@@ -92,6 +93,15 @@ app.get("/index",function(req,res){
 
     })
 });
+// dealing with the Library
+
+app.get("/Client",function(req,res){
+    res.render("Client");
+   
+})
+
+
+
 
 app.listen(3000,function(){
     console.log("server up");
