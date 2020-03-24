@@ -1,0 +1,14 @@
+<form action="/CheckIn" method="POST">
+<select name="names">
+    <% for(var i=0;i < dropdowns.length ;i++){ %>
+    <option><%= dropdowns[i].firstName +"    "%><%= dropdowns[i].lastName%></option>
+    
+<% }; %>
+</select>
+<select name="bookTitle">
+    <% for(var i=0;i < dropdowns.length ;i++){ %>
+    <option><%= dropdowns[i].bookTitle%></option>
+    <% }; %>
+</select>
+<input type="submit" name="submit" value="Submit" >
+</form>
