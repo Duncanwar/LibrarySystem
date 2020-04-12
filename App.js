@@ -1,10 +1,10 @@
 let express=require("express");
 let app=express();
+let Sequelize=require('sequelize');
 let bodyParser=require('body-parser');
 let msyql=require("mysql");
 let multer=require('multer');
 let upload=multer({dest:'public/uploads/'});
-
 
 
 let connection=msyql.createConnection({
